@@ -10,18 +10,42 @@ The project involves some basic programming in Python, however, no experience wi
 
 ## First time setup:
 
-1. Open **Anaconda PowerShell Prompt** after you have logged into your account. This can be done by opening the Windows Start Menu (by pressing the Windows key on your keyboard) and typing in **Anaconda PowerShell Prompt**.
+### Windows
 
-2. A terminal window should open up, type the following commands:
+1. On Windows, open **PowerShell** or **Anaconda PowerShell Prompt** after you have logged into your account.
+
+2. Choose a folder where you want to keep the project, move into it, and clone the repository. For example:
 ```
-cd M:
 mkdir PhysicsWorkExperienceWeek
 cd PhysicsWorkExperienceWeek
 git clone https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git
 ```
-  These will move you to your M: drive and make a folder where the project is cloned into.
+  You can choose a different folder name or location if you prefer. Please ask me in case you are not sure.
 
-3. Move into the project directory and create the python environment:
+3. Check that conda is available. If `conda --version` fails, install Miniconda first.
+
+Windows (PowerShell):
+```
+if (-not (Get-Command conda -ErrorAction SilentlyContinue)) {
+    winget install --id Anaconda.Miniconda3 -e
+}
+```
+
+macOS/Linux (bash):
+```
+if ! command -v conda >/dev/null 2>&1; then
+  case "$(uname)" in
+    Darwin) MINICONDA_OS="MacOSX" ;;
+    Linux) MINICONDA_OS="Linux" ;;
+    *) echo "Unsupported OS for automatic Miniconda install"; exit 1 ;;
+  esac
+  curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-${MINICONDA_OS}-$(uname -m).sh" -o miniconda.sh
+    bash miniconda.sh -b -p "$HOME/miniconda3"
+    eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
+fi
+```
+
+4. Move into the project directory and create the python environment:
 ```
 cd fcc_ml_work_experience_liverpool
 conda env create -f environment.yml
@@ -31,27 +55,77 @@ jupyter lab
 ```
   This installs all the required packages and will take 10-15 minutes. You will see package names scrolling past — this is normal.
 
-4. Activate the environment:
+5. Activate the environment:
 ```
 conda activate FCCHH
 ```
   You should see `(FCCHH)` appear at the start of the prompt line.
 
-5. Launch Jupyter Lab:
+6. Launch Jupyter Lab:
 ```
 jupyter lab
 ```
   JupyterLab will open automatically in your browser.
 
+### macOS/Linux
+
+1. Open a terminal.
+
+2. Choose a folder where you want to keep the project, move into it, and clone the repository. For example:
+```
+mkdir PhysicsWorkExperienceWeek
+cd PhysicsWorkExperienceWeek
+git clone https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git
+```
+
+3. Check that conda is available. If `conda --version` fails, install Miniconda first:
+```
+if ! command -v conda >/dev/null 2>&1; then
+  case "$(uname)" in
+    Darwin) MINICONDA_OS="MacOSX" ;;
+    Linux) MINICONDA_OS="Linux" ;;
+    *) echo "Unsupported OS for automatic Miniconda install"; exit 1 ;;
+  esac
+  curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-${MINICONDA_OS}-$(uname -m).sh" -o miniconda.sh
+  bash miniconda.sh -b -p "$HOME/miniconda3"
+  eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
+fi
+```
+
+4. Move into the project directory and create the Python environment:
+```
+cd fcc_ml_work_experience_liverpool
+conda env create -f environment.yml
+conda activate FCCHH
+pip install -e .
+jupyter lab
+```
+  This installs all the required packages and will take 10-15 minutes. You will see package names scrolling past — this is normal.
+
 ## Subsequent setup:
 
-1. Open **Anaconda PowerShell Prompt**
-2. Type the following:
+### Windows
+
+1. Open **PowerShell** or **Anaconda PowerShell Prompt**.
+2. Move into the cloned project folder, then run:
 ```
-cd M:/PhysicsWorkExperienceWeek/FCCHH/fcc_ml_work_experience_liverpool
+cd path\to\fcc_ml_work_experience_liverpool
 conda activate FCCHH
 jupyter lab
 ```
+  Replace `path\to\fcc_ml_work_experience_liverpool` with the folder where you cloned the repository.
+
+### macOS/Linux
+
+1. Open a terminal.
+2. Move into the cloned project folder, then run:
+```
+cd /path/to/fcc_ml_work_experience_liverpool
+conda activate FCCHH
+jupyter lab
+```
+  Replace `/path/to/fcc_ml_work_experience_liverpool` with the folder where you cloned the repository.
+
 Hope you also find this project fun :)
 
 

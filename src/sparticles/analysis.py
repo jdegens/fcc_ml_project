@@ -20,8 +20,8 @@ from sparticles.plotting import (
 # signal:     scale = (xs × k × eff × lumi) / N_generated
 # background: scale = (xs × k × eff × lumi) / N_generated
 # ---------------------------------------------------------------------------
-SIGNAL_SCALE     = 1.5911959928997252
-BACKGROUND_SCALE = 777.3105506024549
+SIGNAL_SCALE     = 0.5322900454815167
+BACKGROUND_SCALE =  13166.215355474176 # 777.3105506024549
 
 
 def _build_event_table(dataset):
@@ -85,9 +85,12 @@ def apply_cuts(dataset, cuts,
     S_total_raw = len(sig_events)
     B_total_raw = len(bkg_events)
 
+    signal_weight = signal_weight * (233994/S_total_raw)
+    background_weight = background_weight * (56377/B_total_raw)
+
     # Weighted totals (physically expected event yields)
-    S_total_w = S_total_raw * signal_weight * (233994/S_total_raw)
-    B_total_w = B_total_raw * background_weight * (56377/B_total_raw)
+    S_total_w = S_total_raw * signal_weight 
+    B_total_w = B_total_raw * background_weight
 
     # Apply cuts
     mask = pd.Series([True] * len(events), index=events.index)
@@ -118,7 +121,11 @@ def apply_cuts(dataset, cuts,
     B_w = B_raw * background_weight
 
     baseline_w  = S_total_w / np.sqrt(B_total_w)
+    baseline_sys_w  = S_total_w / (np.sqrt(B_total_w) + 0.02 * B_total_w)
+
+
     sig_after_w = S_w / np.sqrt(B_w) if B_w > 0 else float('nan')
+    sig_after_sys_w = S_w / (np.sqrt(B_w) + 0.02 * B_w) if B_w > 0 else float('nan')
 
     # ---- Printout ----
     print("=" * 52)
@@ -140,8 +147,8 @@ def apply_cuts(dataset, cuts,
     if B_w == 0:
         print("  No background passed D: -- try relaxing the cuts.")
     else:
-        print(f"  Baseline S/√B (no cuts): {baseline_w:.2f}")
-        print(f"  Your    S/√B (with cuts): {sig_after_w:.2f}")
+        print(f"  Baseline S/√B (no cuts): {baseline_w:.2f}, Baseline S/√B (with 2% sys): {baseline_sys_w:.2f}")
+        print(f"  Your    S/√B (with cuts): {sig_after_w:.2f}, Your S/√B (with 2% sys): {sig_after_sys_w:.2f}")
         if sig_after_w > baseline_w:
             print(f"  Improved by {sig_after_w - baseline_w:.2f} :)"
                   f"  ({100*(sig_after_w/baseline_w - 1):.1f}% better)")

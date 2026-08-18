@@ -10,7 +10,7 @@ dependencies:
   - pip
 
   # Core scientific stack -- numpy MUST be >=2.0 to read the h5 data files
-  - numpy>=2.0
+  - numpy<2.0
   - scipy
   - pandas
 
@@ -38,7 +38,7 @@ dependencies:
   # PyTorch CPU-only -- fine for dataset processing and plotting on a laptop.
   # GPU users: replace with the appropriate CUDA variant from
   # https://pytorch.org/get-started/locally/
-  - pytorch::pytorch
+  - pytorch::pytorch=2.2.2
   - pytorch::cpuonly
 
   - pip:
@@ -50,3 +50,4 @@ dependencies:
     - pytorch-lightning
     # Install the sparticles package in editable mode so any local changes
     # take effect immediately without reinstalling.
+    - -e .

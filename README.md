@@ -18,7 +18,7 @@ The project involves some basic programming in Python, however, no experience wi
 ```
 mkdir PhysicsWorkExperienceWeek
 cd PhysicsWorkExperienceWeek
-git clone https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git
+git clone [https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git](https://github.com/jdegens/fcc_ml_project.git)
 ```
   You can choose a different folder name or location if you prefer. Please ask me in case you are not sure.
 

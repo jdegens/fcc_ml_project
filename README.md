@@ -58,7 +58,7 @@ jupyter lab
 ```
 mkdir PhysicsWorkExperienceWeek
 cd PhysicsWorkExperienceWeek
-git clone https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git
+git clone https://github.com/jdegens/fcc_ml_project.git
 ```
 
 3. Check that conda is available. If `conda --version` fails, install Miniconda first:

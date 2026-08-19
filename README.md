@@ -30,7 +30,7 @@ git clone https://github.com/jdegens/fcc_ml_project.git
 
 4. Move into the project directory and create the python environment:
 ```
-cd fcc_ml_work_experience_liverpool
+cd fcc_ml_liverpool
 conda env create -f environment.yml
 conda activate FCCHH
 pip install -e .

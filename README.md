@@ -10,6 +10,8 @@ The project involves some basic programming in Python, however, no experience wi
 
 ## First time setup:
 
+If you dont have conda installed, download it from here: https://www.anaconda.com/docs/getting-started/installation 
+
 ### Windows
 
 1. On Windows, open **PowerShell** or **Anaconda PowerShell Prompt** after you have logged into your account.
@@ -24,26 +26,7 @@ git clone https://github.com/jdegens/fcc_ml_project.git
 
 3. Check that conda is available. If `conda --version` fails, install Miniconda first.
 
-Windows (PowerShell):
-```
-if (-not (Get-Command conda -ErrorAction SilentlyContinue)) {
-    winget install --id Anaconda.Miniconda3 -e
-}
-```
 
-macOS/Linux (bash):
-```
-if ! command -v conda >/dev/null 2>&1; then
-  case "$(uname)" in
-    Darwin) MINICONDA_OS="MacOSX" ;;
-    Linux) MINICONDA_OS="Linux" ;;
-    *) echo "Unsupported OS for automatic Miniconda install"; exit 1 ;;
-  esac
-  curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-${MINICONDA_OS}-$(uname -m).sh" -o miniconda.sh
-    bash miniconda.sh -b -p "$HOME/miniconda3"
-    eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
-fi
-```
 
 4. Move into the project directory and create the python environment:
 ```
@@ -79,18 +62,6 @@ git clone https://github.com/LennoxWood/fcc_ml_work_experience_liverpool.git
 ```
 
 3. Check that conda is available. If `conda --version` fails, install Miniconda first:
-```
-if ! command -v conda >/dev/null 2>&1; then
-  case "$(uname)" in
-    Darwin) MINICONDA_OS="MacOSX" ;;
-    Linux) MINICONDA_OS="Linux" ;;
-    *) echo "Unsupported OS for automatic Miniconda install"; exit 1 ;;
-  esac
-  curl -fsSL "https://repo.anaconda.com/miniconda/Miniconda3-latest-${MINICONDA_OS}-$(uname -m).sh" -o miniconda.sh
-  bash miniconda.sh -b -p "$HOME/miniconda3"
-  eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
-fi
-```
 
 4. Move into the project directory and create the Python environment:
 ```
